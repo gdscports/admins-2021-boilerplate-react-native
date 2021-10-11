@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "yeet",
-    "slug": "yeet",
+    "name": "gdsc-boilerplate-react-native",
+    "slug": "gdsc-boilerplate-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
