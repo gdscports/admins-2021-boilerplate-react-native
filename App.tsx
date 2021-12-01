@@ -1,21 +1,71 @@
 import {StatusBar} from 'expo-status-bar';
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Image} from 'react-native';
+import {
+  Provider as PaperProvider,
+  DefaultTheme,
+  FAB,
+  Chip,
+  Banner,
+} from 'react-native-paper';
 
 export default function App() {
+  const [visible, setVisible] = useState(true);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <PaperProvider theme={DefaultTheme}>
+      <Banner
+        visible={visible}
+        actions={[
+          {
+            label: 'Fix it',
+            onPress: () => setVisible(false),
+          },
+          {
+            label: 'Learn more',
+            onPress: () => setVisible(false),
+          },
+        ]}
+        icon={({size}) => (
+          <Image
+            source={{
+              uri: 'https://avatars3.githubusercontent.com/u/17571969?s=400&v=4',
+            }}
+            style={{
+              width: size,
+              height: size,
+            }}
+          />
+        )}
+      >
+        There was a problem processing a transaction on your credit card.
+      </Banner>
+      <FAB
+        style={styles.fab}
+        small
+        icon="plus"
+        onPress={() => console.log('Pressed')}
+      />
+      <Chip
+        style={styles.chip}
+        icon="information"
+        onPress={() => console.log('Pressed')}
+      >
+        Example Chip
+      </Chip>
       <StatusBar style="auto" />
-    </View>
+    </PaperProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
+  chip: {
+    margin: 32,
   },
 });
